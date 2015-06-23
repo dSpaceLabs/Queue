@@ -1,0 +1,18 @@
+language: php
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+    - 5.6
+    - 7
+install:
+    - composer install
+script:
+    - phpunit --debug --verbose
+notifications:
+    email: false
+    irc: "chat.freenode.net#dspacelabs"
+cache:
+    directories:
+        - $HOME/.composer/cache
+        - vendor/
