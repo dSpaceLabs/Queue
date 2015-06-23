@@ -1,0 +1,16 @@
+<phpunit
+    bootstrap="vendor/autoload.php">
+
+    <testsuites>
+        <testsuite name="full">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+    </logging>
+
+    <listeners>
+        <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
+    </listeners>
+</phpunit>

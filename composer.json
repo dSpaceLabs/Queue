@@ -16,7 +16,11 @@
         "docs": "https://github.com/dSpaceLabs/Queue",
         "irc": "irc://irc.freenode.org/dspacelabs"
     },
-    "require": {},
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.7"
+    },
     "autoload": {
         "psr-4": { "Dspacelabs\\Component\\Queue\\": "src/" }
     },
