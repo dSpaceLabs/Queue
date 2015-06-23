@@ -7,7 +7,15 @@
         </testsuite>
     </testsuites>
 
+    <filter>
+        <whitelist>
+            <directory>src/</directory>
+        </whitelist>
+    </filter>
+
     <logging>
+        <log type="coverage-html" target="docs/coverage" />
+        <log type="coverage-clover" target="logs/clover.xml"/>
     </logging>
 
     <listeners>
