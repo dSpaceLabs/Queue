@@ -45,4 +45,10 @@ interface MessageInterface
      * @return self
      */
     public function setHeaders($headers);
+
+    /**
+     * @param string $header
+     * @return string|null
+     */
+    public function getHeader($header);
 }

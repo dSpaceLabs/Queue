@@ -22,6 +22,9 @@
         "phpunit/phpunit": "~4.7",
         "mockery/mockery": "~1.0@dev"
     },
+    "suggest": {
+        "aws/aws-sdk-php": "Require to use SQS Queues"
+    },
     "autoload": {
         "psr-4": { "Dspacelabs\\Component\\Queue\\": "src/" }
     },

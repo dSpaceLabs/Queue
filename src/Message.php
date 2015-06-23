@@ -71,4 +71,11 @@ class Message implements MessageInterface
 
         return $this;
     }
+
+    public function getHeader($header)
+    {
+        if (isset($this->headers[$header])) {
+            return $this->headers[$header];
+        }
+    }
 }
