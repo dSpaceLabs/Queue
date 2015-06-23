@@ -18,4 +18,20 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message = new Message($body);
         $this->assertSame($body, $message->getBody());
     }
+
+    /**
+     */
+    public function test_headers()
+    {
+        $headers = array(
+            'content/type' => 'application/json',
+        );
+
+        $message = new Message('', $headers);
+        $this->assertCount(1, $message->getHeaders());
+        $this->assertSame($headers, $message->getHeaders());
+
+        $message->addHeader('exchange', 'testing');
+        $this->assertCount(2, $message->getHeaders());
+    }
 }

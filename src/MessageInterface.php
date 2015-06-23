@@ -31,12 +31,12 @@ interface MessageInterface
     public function getHeaders();
 
     /**
-     * Set a header
+     * add a header
      *
      * @param string $header
      * @param string $value
      */
-    public function setHeader($header, $value);
+    public function addHeader($header, $value);
 
     /**
      * Replace all headers

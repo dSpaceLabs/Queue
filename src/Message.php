@@ -57,7 +57,7 @@ class Message implements MessageInterface
     /**
      * {@inheritDoc}
      */
-    public function setHeader($header, $value)
+    public function addHeader($header, $value)
     {
         $this->headers[$header] = $value;
     }
