@@ -1,0 +1,31 @@
+{
+    "name": "dspacelabs/queue",
+    "description": "General queueing library for php",
+    "keywords": ["queue"],
+    "license": "MIT",
+    "homepage": "https://github.com/dSpaceLabs/Queue",
+    "authors": [
+        {
+            "name": "Joshua Estes",
+            "homepage": "http://joshuaestes.me"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/dSpaceLabs/Queue/issues",
+        "source": "https://github.com/dSpaceLabs/Queue",
+        "docs": "https://github.com/dSpaceLabs/Queue",
+        "irc": "irc://irc.freenode.org/dspacelabs"
+    },
+    "require": {},
+    "autoload": {
+        "psr-4": { "Dspacelabs\\Component\\Queue\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Dspacelabs\\Component\\Queue\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
