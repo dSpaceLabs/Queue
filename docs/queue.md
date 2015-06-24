@@ -105,6 +105,7 @@ interface QueueInterface
 
     /**
      * @param MessageInterface $message
+     *   Message that needs to be deleted
      */
     public function delete(MessageInterface $message);
 }
