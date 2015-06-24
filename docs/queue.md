@@ -11,10 +11,10 @@ consumers.
 ## Definitions
 
 * Publisher - Sends messages to a queue
-* Consumer - Processes messages from a queue
-* Message - Is sent to a queue, is pulled from a queue
-* Queue - Where messages are stored
-* Broker - Contains 0 to n queues, factory for queues
+* Consumer  - Processes messages from a queue
+* Message   - Is sent to a queue, is pulled from a queue
+* Queue     - Where messages are stored
+* Broker    - Contains 0 to n queues, factory for queues
 
 ## Key Concepts
 
@@ -119,10 +119,16 @@ interface QueueInterface
 namespace Dspacelabs\Component\Queue;
 
 /**
+ * Messages are used to send to a queue and are returned from a queue object.
+ * Messages can have attributes, as an example, SQS calls these attributes, but
+ * in some other systems, they are called headers. When using AMQP you can set
+ * headers such as Content-Type, which within this library are attributes.
  */
 interface MessageInterface
 {
     /**
+     * What is stored in the database
+     *
      * @param string $body
      * @return self
      */
@@ -136,19 +142,19 @@ interface MessageInterface
     /**
      * @return array
      */
-    public function getHeaders();
+    public function getAttributes();
 
     /**
      * @param string $header
      * @param string $value
      * @return self
      */
-    public function addHeader($header, $value);
+    public function addAttribute($attribute, $value);
 
     /**
      * @param array $headers
      * @return self
      */
-    public function setHeaders(array $headers);
+    public function setAttributes(array $attribute);
 }
 ```

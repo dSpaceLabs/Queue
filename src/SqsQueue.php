@@ -25,7 +25,7 @@ class SqsQueue extends Queue
      * @param string $queueUrl
      * @param string $name
      */
-    public function __construct($client, $queueUrl, $name)
+    public function __construct(SqsClient $client, $queueUrl, $name)
     {
         $this->client   = $client;
         $this->queueUrl = $queueUrl;

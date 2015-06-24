@@ -16,16 +16,16 @@ class Message implements MessageInterface
     /**
      * @var array
      */
-    protected $headers;
+    protected $attributes;
 
     /**
      * @param string $body
-     * @param array  $headers
+     * @param array  $attributes
      */
-    public function __construct($body = '', array $headers = array())
+    public function __construct($body = '', array $attributes = array())
     {
         $this->setBody($body);
-        $this->setHeaders($headers);
+        $this->setAttributes($attributes);
     }
 
     /**
@@ -49,33 +49,33 @@ class Message implements MessageInterface
     /**
      * {@inheritDoc}
      */
-    public function getHeaders()
+    public function getAttributes()
     {
-        return $this->headers;
+        return $this->attributes;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function addHeader($header, $value)
+    public function addAttribute($attribute, $value)
     {
-        $this->headers[$header] = $value;
+        $this->attributes[$attribute] = $value;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setHeaders($headers)
+    public function setAttributes($attributes)
     {
-        $this->headers = $headers;
+        $this->attributes = $attributes;
 
         return $this;
     }
 
-    public function getHeader($header)
+    public function getAttribute($attribute)
     {
-        if (isset($this->headers[$header])) {
-            return $this->headers[$header];
+        if (isset($this->attributes[$attribute])) {
+            return $this->attributes[$attribute];
         }
     }
 }

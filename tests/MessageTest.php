@@ -21,17 +21,21 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      */
-    public function test_headers()
+    public function test_attributes()
     {
-        $headers = array(
-            'content/type' => 'application/json',
+        $attributes = array(
+            'content-type' => 'application/json',
         );
 
-        $message = new Message('', $headers);
-        $this->assertCount(1, $message->getHeaders());
-        $this->assertSame($headers, $message->getHeaders());
+        $message = new Message('', $attributes);
+        $this->assertCount(1, $message->getAttributes());
+        $this->assertSame($attributes, $message->getAttributes());
 
-        $message->addHeader('exchange', 'testing');
-        $this->assertCount(2, $message->getHeaders());
+        $message->addAttribute('exchange', 'testing');
+        $this->assertCount(2, $message->getAttributes());
+
+        $this->assertSame('application/json', $message->getAttribute('content-type'));
+        $this->assertSame('testing', $message->getAttribute('exchange'));
+        $this->assertNull($message->getAttribute('doesNotExist'));
     }
 }

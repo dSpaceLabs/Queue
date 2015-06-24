@@ -24,31 +24,31 @@ interface MessageInterface
     public function getBody();
 
     /**
-     * Retrieve all headers
+     * Retrieve all attributes
      *
      * @return array
      */
-    public function getHeaders();
+    public function getAttributes();
 
     /**
-     * add a header
+     * add a attribute
      *
-     * @param string $header
+     * @param string $attribute
      * @param string $value
      */
-    public function addHeader($header, $value);
+    public function addAttribute($attribute, $value);
 
     /**
-     * Replace all headers
+     * Replace all attributes
      *
-     * @param array $headers
+     * @param array $attributes
      * @return self
      */
-    public function setHeaders($headers);
+    public function setAttributes($attributes);
 
     /**
-     * @param string $header
+     * @param string $attribute
      * @return string|null
      */
-    public function getHeader($header);
+    public function getAttribute($attribute);
 }
