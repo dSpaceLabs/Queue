@@ -20,6 +20,12 @@ consumers.
 
 ## Interfaces
 
+Possible Exceptions
+
+- NoMessageException is thrown when there are no messages in a queue
+- InvalidMessageException is thrown when the message passed in to publish or
+  delete is invalid and could not be processed correctly.
+
 ```php
 <?php
 
@@ -29,19 +35,6 @@ namespace Dspacelabs\Component\Queue;
  * Any exceptions that are thrown must throw this exception
  */
 class QueueException extends \Exception
-{
-}
-```
-
-```php
-<?php
-
-namespace Dspacelabs\Component\Queue;
-
-/**
- * Used when a name is invalid
- */
-class InvalidArgumentException extends QueueException
 {
 }
 ```
@@ -94,8 +87,12 @@ interface QueueInterface
     /**
      * Publishes a message to the queue
      *
+     * Modifies the message, adds attributes and returns the message object
+     * that was passed into it.
+     *
      * @param MessageInterface $message
-     * @return boolean
+     * @thorws CacheException
+     * @return MessageInterface
      */
     public function publish(MessageInterface $message);
 

@@ -37,10 +37,16 @@ class SqsQueue extends Queue
      */
     public function publish(MessageInterface $message)
     {
-        $this->client->sendMessage(array(
+        $result = $this->client->sendMessage(array(
             'MessageBody' => $message->getBody(),
             'QueueUrl'    => $this->queueUrl,
         ));
+
+        $message->addAttribute('MD5OfMessageAttributes', $result['MD5OfMessageAttributes']);
+        $message->addAttribute('MD5OfMessageBody', $result['MD5OfMessageBody']);
+        $message->addAttribute('MessageId', $result['MessageId']);
+
+        return $message;
     }
 
     /**
@@ -64,12 +70,12 @@ class SqsQueue extends Queue
      */
     public function delete(MessageInterface $message)
     {
-        if (null === $message->getHeader('ReceiptHandle')) {
+        if (null === $message->getAttribute('ReceiptHandle')) {
             throw new CacheException('Message does not contain ReceiptHandle');
         }
 
         $result = $this->client->deleteMessage(array(
-            'ReceiptHandle' => $message->getHeader('ReceiptHandle'),
+            'ReceiptHandle' => $message->getAttribute('ReceiptHandle'),
             'QueueUrl'      => $this->queueUrl,
         ));
     }
