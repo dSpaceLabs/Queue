@@ -9,6 +9,10 @@ namespace Dspacelabs\Component\Queue;
 use Aws\Sqs\SqsClient;
 
 /**
+ * Amazon SQS Queue
+ *
+ * Requires:
+ * - Amazon PHP SDK
  */
 class SqsQueue extends Queue
 {
@@ -24,8 +28,13 @@ class SqsQueue extends Queue
 
     /**
      * @param SqsClient $client
+     *   The SqsClient comes from the Amazon PHP SDK, see the documentation that
+     *   comes from amazon on how to configure you SQS Client
      * @param string $queueUrl
+     *   Each SQS Queue is given a unique URL, this must be passed in
      * @param string $name
+     *   Anything that you wish to name this queue, it does not have to match
+     *   the name in amazon
      */
     public function __construct(SqsClient $client, $queueUrl, $name)
     {

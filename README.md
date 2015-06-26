@@ -19,8 +19,15 @@ composer install dspacelabs/queue
 ```php
 <?php
 
-use Dspacelabs\Component\Queue\Broker;
-use Dspacelabs\Component\Queue\Queue;
+$message = new Message($body);
+$queue->publish($message);
+```
+
+## Using the SqsQueue
+
+Install amazon php sdk.
+
+```php
 ```
 
 ## Change Log
