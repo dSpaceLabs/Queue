@@ -1,10 +1,15 @@
 <?php
 /**
+ * @copyright 2015 dSpace Labs LLC
+ * @license MIT
  */
 
 namespace Dspacelabs\Component\Queue;
 
 /**
+ * Message Interface
+ *
+ * Messages are sent to a queue and a queue will return messages
  */
 interface MessageInterface
 {
