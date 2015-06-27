@@ -82,7 +82,7 @@ class SqsQueue extends Queue
     public function delete(MessageInterface $message)
     {
         if (null === $message->getAttribute('ReceiptHandle')) {
-            throw new CacheException('Message does not contain ReceiptHandle');
+            throw new QueueException('Message does not contain ReceiptHandle');
         }
 
         $result = $this->client->deleteMessage(array(
