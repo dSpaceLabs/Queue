@@ -69,6 +69,10 @@ class SqsQueue extends Queue
             'QueueUrl' => $this->queueUrl,
         ));
 
+        if (null === $result->get('Messages')) {
+            return;
+        }
+
         if ($result) {
             return new Message($result['Messages'][0]['Body'], array(
                 'ReceiptHandle' => $result['Messages'][0]['ReceiptHandle'],
