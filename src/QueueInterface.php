@@ -26,7 +26,10 @@ interface QueueInterface
     public function publish(MessageInterface $message);
 
     /**
-     * Returns a message from the queue to be processed
+     * Returns a message from the queue
+     *
+     * If there are any messages in the queue it will return a MessageInterface
+     * and if there are NO messages in the queue, this SHOULD return null
      *
      * @return MessageInterface|null
      */
