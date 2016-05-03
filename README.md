@@ -11,7 +11,7 @@ systems.
 ## Installation
 
 ```
-composer install dspacelabs/queue
+composer require dspacelabs/queue "^0.1@dev"
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ See [CHANGELOG.md].
 
 ## License
 
-Copyright (c) 2015 dSpace Labs LLC
+Copyright (c) 2015-2016 dSpace Labs LLC
 
 See [LICENSE] for full license.
 
