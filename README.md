@@ -32,12 +32,18 @@ $queue->publish($message);
 // Receive messages
 $message = $queue->receive();
 $body    = $message->getBody();
+// ... Process Data ...
 /**
  * $message will be the message that was published. `->receive()` can be put
  * into a foreach loop if you want to continue to process the queue until
  * all the messages are processed, use a for loop in you only want to process
  * a small number of the messages
  */
+
+/**
+ * Once you are done processing a message, it needs to be deleted from the queue
+ */
+$queue->delete($message);
 ```
 
 ## Using the SqsQueue
