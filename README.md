@@ -88,7 +88,7 @@ $broker = new Broker();
 // I assume you already have a queue
 $broker->addQueue($queue);
 
-// `quque.name` is the name given to the queue you created
+// `queue.name` is the name given to the queue you created
 // I assume you already have a `$message` created
 $broker->get('queue.name')->publish($message);
 $broker->get('queue.other')->publish($messageOther);
