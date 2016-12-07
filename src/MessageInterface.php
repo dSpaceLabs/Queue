@@ -11,7 +11,7 @@ namespace Dspacelabs\Component\Queue;
  *
  * Messages are sent to a queue and a queue will return messages
  */
-interface MessageInterface
+interface MessageInterface extends \Serializable
 {
     /**
      * Set the contents of the message

@@ -42,4 +42,9 @@ interface QueueInterface
      * @param MessageInterface $message
      */
     public function delete(MessageInterface $message);
+
+    /**
+     * Purges ALL messages from the queue
+     */
+    //public function purge();
 }

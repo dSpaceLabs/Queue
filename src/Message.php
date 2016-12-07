@@ -84,4 +84,28 @@ class Message implements MessageInterface
             return $this->attributes[$attribute];
         }
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function serialize()
+    {
+        return serialize(
+            array(
+                $this->body,
+                $this->attributes
+            )
+        );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function unserialize($message)
+    {
+        list(
+            $this->body,
+            $this->attributes
+        ) = unserialize($message);
+    }
 }
