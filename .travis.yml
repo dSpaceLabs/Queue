@@ -7,10 +7,9 @@ php:
 install:
     - composer install
 script:
-    - phpunit --debug --verbose
+    - php vendor/bin/phing
 notifications:
     email: false
-    irc: "chat.freenode.net#dspacelabs"
 cache:
     directories:
         - $HOME/.composer/cache
