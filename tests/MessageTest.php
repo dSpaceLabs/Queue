@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
@@ -12,18 +12,28 @@ use Dspacelabs\Component\Queue\Message;
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     */
-    public function test_setBody_and_getBody()
+    public function testBody()
     {
+        // random string
         $body    = microtime();
         $message = new Message($body);
         $this->assertSame($body, $message->getBody());
+
+        // Array
+        $body = array(
+            'k' => 'v'
+        );
+        $message = new Message($body);
+        $this->assertSame($body, $message->getBody());
+
+        // Send a serialized body
+        $serializedBody = serialize($body);
+        $message = new Message($serializedBody);
+        $this->assertSame($serializedBody, $message->getBody());
+        $this->assertSame($body, unserialize($message->getBody()));
     }
 
-    /**
-     */
-    public function test_attributes()
+    public function testAttributes()
     {
         $attributes = array(
             'content-type' => 'application/json',

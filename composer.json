@@ -1,6 +1,6 @@
 {
     "name": "dspacelabs/queue",
-    "description": "General queueing library for php",
+    "description": "General abstract queue library for PHP, has ability to support various different queue systems",
     "keywords": ["message queue", "aws sqs"],
     "license": "MIT",
     "homepage": "https://github.com/dSpaceLabs/Queue",

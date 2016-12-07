@@ -16,7 +16,7 @@ interface MessageInterface
     /**
      * Set the contents of the message
      *
-     * @param string $body
+     * @param mixed $body
      * @return self
      */
     public function setBody($body);
@@ -24,7 +24,7 @@ interface MessageInterface
     /**
      * Retrieve the contents of the body
      *
-     * @return string
+     * @return mixed
      */
     public function getBody();
 

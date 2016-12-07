@@ -1,12 +1,13 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
 namespace Dspacelabs\Component\Queue;
 
 /**
+ * Message
  */
 class Message implements MessageInterface
 {
@@ -35,7 +36,7 @@ class Message implements MessageInterface
      */
     public function setBody($body)
     {
-        $this->body = $body;
+        $this->body = serialize($body);
 
         return $this;
     }
@@ -45,7 +46,7 @@ class Message implements MessageInterface
      */
     public function getBody()
     {
-        return $this->body;
+        return unserialize($this->body);
     }
 
     /**
@@ -74,6 +75,9 @@ class Message implements MessageInterface
         return $this;
     }
 
+    /**
+     * {$inheritDoc}
+     */
     public function getAttribute($attribute)
     {
         if (isset($this->attributes[$attribute])) {
