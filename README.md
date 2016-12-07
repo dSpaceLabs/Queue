@@ -58,6 +58,31 @@ The Broker helps you keep track of queues. So instead of having 100 different
 queue objects all over, you just add all those to the Broker and let the Broker
 sort them out. You just get the ones you need.
 
+## Using the FileQueue
+
+The FileQueue will store messages on disk and is good to use for local
+development.
+
+Messages are stored on disk in the file naming format "name.timestamp.message"
+so you can have multiple file queues share the same directory.
+
+
+```php
+<?php
+
+use Dspacelabs\Component\Queue\FileQueue;
+use Dspacelabs\Component\Queue\Message;
+
+$queue = new FileQueue('queue.name', '/tmp/');
+$queue->publish(new Message('Hello World!'));
+
+// ...
+
+$message = $queue->receive();
+$body = $message->getBody(); // $body === "Hello World!"
+$queue->delete($message);
+```
+
 ## Using the SqsQueue
 
 Requires Amazon PHP SDK.
