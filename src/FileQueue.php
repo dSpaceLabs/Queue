@@ -37,7 +37,6 @@ class FileQueue extends Queue
         $path  = sprintf('%s/%s.%s.message', $this->path, $this->name, $fname);
         $file  = new \splFileObject($path, 'w');
         $file->fwrite(serialize($message));
-        var_dump($file);
     }
 
     /**
