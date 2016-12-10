@@ -22,4 +22,13 @@ class FileQueueTest extends \PHPUnit_Framework_TestCase
             $queue->delete($message);
         }
     }
+
+    public function testZeroSizeMessage()
+    {
+        $file = sprintf('%s/%s.0000.message', sys_get_temp_dir(), 'test');
+        touch($file);
+        $queue = new FileQueue('test', sys_get_temp_dir());
+        $msg = $queue->receive();
+        $this->assertNull($msg);
+    }
 }

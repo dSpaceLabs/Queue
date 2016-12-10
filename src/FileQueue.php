@@ -47,13 +47,12 @@ class FileQueue extends Queue
         // fetch from disk
         $paths = glob(sprintf('%s/%s.*.message', $this->path, $this->name));
         foreach ($paths as $path) {
-            $file = new \splFileObject($path);
-            if (0 === $file->getSize()) {
+            if (0 === filesize($path)) {
                 // Nothing in this file, skip and move on
                 unlink($path);
                 continue;
             }
-            $message = unserialize($file->fread($file->getSize()));
+            $message = unserialize(file_get_contents($path));
             $message->addAttribute('path', $path);
             return $message;
         }
