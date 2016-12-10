@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
@@ -12,43 +12,37 @@ use Dspacelabs\Component\Queue\Broker;
  */
 class BrokerTest extends \PHPUnit_Framework_TestCase
 {
-    private $broker;
-
-    protected function setUp()
+    public function testAddQueueMethod()
     {
-        $this->queue  = \Mockery::mock('Dspacelabs\Component\Queue\QueueInterface');
-        $this->broker = new Broker();
+        $queue = \Mockery::mock('Dspacelabs\Component\Queue\QueueInterface');
+        $queue
+            ->shouldReceive('getName')
+            ->andReturn('unique.queue.name');
+        $broker = new Broker();
+        $broker->addQueue($queue);
+        $this->assertSame($queue, $broker->get('unique.queue.name'));
     }
 
     /**
      * @expectedException Dspacelabs\Component\Queue\QueueException
      */
-    public function test_addQueue()
+    public function testAddQueueWithSameName()
     {
-        $this->queue
+        $queue = \Mockery::mock('Dspacelabs\Component\Queue\QueueInterface');
+        $queue
             ->shouldReceive('getName')
             ->andReturn('unique.queue.name');
-
-        // Make sure queue is added correctly
-        $this->broker->addQueue($this->queue);
-        $this->assertSame($this->queue, $this->broker->get('unique.queue.name'));
-
-        // SHOULD throw an exception
-        $this->broker->addQueue($this->queue);
+        $broker = new Broker();
+        $broker->addQueue($queue);
+        $broker->addQueue($queue); // Exception
     }
 
     /**
      * @expectedException Dspacelabs\Component\Queue\QueueException
      */
-    public function test_getQueue()
+    public function testGetQueueNotFound()
     {
-        $this->queue
-            ->shouldReceive('getName')
-            ->andReturn('unique.queue.name');
-        $this->broker->addQueue($this->queue);
-        $this->assertSame($this->queue, $this->broker->get('unique.queue.name'));
-
-        // SHOULD throw an exception
-        $this->broker->get('does.not.exist');
+        $broker = new Broker();
+        $broker->get('does.not.exist');
     }
 }

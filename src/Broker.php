@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
@@ -29,6 +29,8 @@ class Broker implements BrokerInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @return self
      */
     public function addQueue(QueueInterface $queue)
     {
@@ -37,5 +39,7 @@ class Broker implements BrokerInterface
         }
 
         $this->queues[$queue->getName()] = $queue;
+
+        return $this;
     }
 }

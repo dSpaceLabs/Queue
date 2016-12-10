@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
@@ -9,6 +9,12 @@ namespace Dspacelabs\Component\Queue;
 /**
  * Within this library a broker is used to keep track of queues that are added
  * and can be retrieved later.
+ *
+ * ```php
+ * $broker = new Broker();
+ * $broker->addQueue($queue);
+ * $queue = $broker->get('queue.name');
+ * ```
  */
 interface BrokerInterface
 {
