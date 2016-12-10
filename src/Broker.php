@@ -29,8 +29,6 @@ class Broker implements BrokerInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @return self
      */
     public function addQueue(QueueInterface $queue)
     {

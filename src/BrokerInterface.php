@@ -36,6 +36,7 @@ interface BrokerInterface
      * @param QueueInterface $queue
      * @throws QueueException
      *   If queue already exists or could not be added for some other reason
+     * @return self
      */
     public function addQueue(QueueInterface $queue);
 }
