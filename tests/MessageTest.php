@@ -50,4 +50,14 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('testing', $message->getAttribute('exchange'));
         $this->assertNull($message->getAttribute('doesNotExist'));
     }
+
+    public function testBodyWithObjects()
+    {
+        $body = new \stdClass();
+        $body->testing = 'hit';
+
+        $message = new Message($body);
+
+        $this->assertEquals($body, $message->getBody());
+    }
 }

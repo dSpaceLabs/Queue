@@ -7,7 +7,7 @@
 
     <target name="phpunit">
         <mkdir dir="${project.basedir}/docs/coverage" />
-        <exec executable="${project.basedir}/vendor/bin/phpunit" output="/dev/stdout" error="/dev/stderr" logoutput="/dev/stdout" level="debug" checkreturn="true">
+        <exec executable="${project.basedir}/vendor/bin/phpunit" passthru="true" output="/dev/stdout" error="/dev/stderr" logoutput="/dev/stdout" level="debug" checkreturn="true">
             <arg value="--debug" />
             <arg value="--verbose" />
             <arg value="--coverage-html" />
