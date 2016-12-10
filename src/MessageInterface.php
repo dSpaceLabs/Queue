@@ -36,7 +36,7 @@ interface MessageInterface extends \Serializable
     public function getAttributes();
 
     /**
-     * add a attribute
+     * Add an attribute
      *
      * @param string $attribute
      * @param string $value
@@ -52,6 +52,9 @@ interface MessageInterface extends \Serializable
     public function setAttributes($attributes);
 
     /**
+     * Get value of attribute, if attribute does not exist on message this
+     * returns null
+     *
      * @param string $attribute
      * @return string|null
      */

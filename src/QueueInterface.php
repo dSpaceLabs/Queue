@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015 dSpace Labs LLC
+ * @copyright 2015-2016 dSpace Labs LLC
  * @license MIT
  */
 
@@ -40,11 +40,16 @@ interface QueueInterface
      * queue
      *
      * @param MessageInterface $message
+     * @throws QueueException
+     *   If the message cannot be deleted, an exception is thrown
      */
     public function delete(MessageInterface $message);
 
     /**
      * Purges ALL messages from the queue
+     *
+     * @throws QueueException
+     *   If the queue cannot be purged, this exception is thrown
      */
     //public function purge();
 }
