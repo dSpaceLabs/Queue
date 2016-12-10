@@ -49,7 +49,7 @@ class SqsQueue extends Queue
     public function publish(MessageInterface $message)
     {
         $result = $this->client->sendMessage(array(
-            'MessageBody' => $message->getBody(),
+            'MessageBody' => serialize($message),
             'QueueUrl'    => $this->queueUrl,
         ));
 
@@ -69,14 +69,11 @@ class SqsQueue extends Queue
             'QueueUrl' => $this->queueUrl,
         ));
 
-        if (null === $result->get('Messages')) {
-            return;
-        }
+        if (!empty($result['Messages'][0])) {
+            $message = unserialize($result['Messages'][0]['Body']);
+            $message->addAttribute('ReceiptHandle', $result['Messages'][0]['ReceiptHandle']);
 
-        if ($result) {
-            return new Message($result['Messages'][0]['Body'], array(
-                'ReceiptHandle' => $result['Messages'][0]['ReceiptHandle'],
-            ));
+            return $message;
         }
     }
 
