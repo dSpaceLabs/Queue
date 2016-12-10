@@ -17,6 +17,7 @@
         "irc": "irc://irc.freenode.org/dspacelabs"
     },
     "require": {
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "mockery/mockery": "^0.9.6",
