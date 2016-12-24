@@ -14,15 +14,18 @@ class StandardQueue extends Queue
     /**
      * @var \SplQueue
      */
-    protected $queue;
+    protected static $queue;
 
     /**
      * @param string $name
      */
     public function __construct($name)
     {
-        $this->name  = $name;
-        $this->queue = new \SplQueue();
+        $this->name = $name;
+
+        if (!self::$queue) {
+            self::$queue = new \SplQueue();
+        }
     }
 
     /**
@@ -30,7 +33,7 @@ class StandardQueue extends Queue
      */
     public function publish(MessageInterface $message)
     {
-        $this->queue->enqueue($message);
+        self::$queue->enqueue($message);
     }
 
     /**
@@ -38,8 +41,8 @@ class StandardQueue extends Queue
      */
     public function receive()
     {
-        if (!$this->queue->isEmpty()) {
-            return $this->queue->dequeue();
+        if (!self::$queue->isEmpty()) {
+            return self::$queue->dequeue();
         }
     }
 
