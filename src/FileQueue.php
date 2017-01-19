@@ -33,10 +33,11 @@ class FileQueue extends Queue
      */
     public function publish(MessageInterface $message)
     {
-        $fname = time();
-        $path  = sprintf('%s/%s.%s.message', $this->path, $this->name, $fname);
-        $file  = new \splFileObject($path, 'w');
-        $file->fwrite(serialize($message));
+        $content = serialize($message);
+        $fname   = hash('sha256', $content.microtime());
+        $path    = sprintf('%s/%s.%s.message', $this->path, $this->name, $fname);
+        $file    = new \splFileObject($path, 'w');
+        $file->fwrite($content);
     }
 
     /**
