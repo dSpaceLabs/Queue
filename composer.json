@@ -20,7 +20,7 @@
         "psr/log": "^1.0"
     },
     "require-dev": {
-        "aws/aws-sdk-php": "^3.20",
+        "aws/aws-sdk-php": "^3.24",
         "mockery/mockery": "^0.9.6",
         "phing/phing": "^2.15",
         "phpunit/phpunit": "~4.8"
