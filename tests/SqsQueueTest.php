@@ -52,7 +52,7 @@ class SqsQueueTest extends \PHPUnit_Framework_TestCase
                 array(
                     'Messages' => array(
                         array(
-                            'Body'          => serialize($message),
+                            'Body'          => base64_encode(serialize($message)),
                             'ReceiptHandle' => 'testReceiptHandle',
                         ),
                     )
