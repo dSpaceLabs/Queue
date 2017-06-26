@@ -1,9 +1,5 @@
-Queue Component
+Queue Component [![Build Status](https://travis-ci.org/dSpaceLabs/Queue.svg?branch=master)](https://travis-ci.org/dSpaceLabs/Queue)
 ===============
-
-[![Build Status](https://travis-ci.org/dSpaceLabs/Queue.svg?branch=master)](https://travis-ci.org/dSpaceLabs/Queue)
-
----
 
 General queue library for PHP, ability to support various different queue
 systems.
@@ -11,7 +7,7 @@ systems.
 ## Installation
 
 ```
-composer require dspacelabs/queue "^0.1@dev"
+composer require dspacelabs/queue
 ```
 
 ## Usage

@@ -1,10 +1,8 @@
 Change Log
 ==========
 
-* See [Keep a CHANGELOG] for format
-* Supports [Semantic Versioning].
+## [0.1.0]
+* Initial Release
+* Includes Sqs and File queues
 
-## [unreleased]
-
-[Keep a CHANGELOG]: http://keepachangelog.com
-[Semantic Versioning]: http://semver.org/spec/v2.0.0.html
+[0.1.0]: https://github.com/dSpaceLabs/Queue/compare/e30e9cdec4368d13425509761b8dcc9fbdaea517...v0.1.0
