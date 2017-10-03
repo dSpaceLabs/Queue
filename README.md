@@ -95,13 +95,11 @@ use Aws\Sqs\SqsClient;
 use Dspacelabs\Component\Queue\SqsQueue;
 
 $credentials = new Credentials($accessKey, $secretKey);
-$client = new SqsClient(
-    array(
-        'version'     => 'latest',
-        'region'      => 'us-east-1',
-        'credentials' => $credentials,
-    )
-);
+$client = new SqsClient([
+    'version'     => 'latest',
+    'region'      => 'us-east-1',
+    'credentials' => $credentials,
+]);
 
 $queue  = new SqsQueue($client, $queueUrl, $name);
 ```
@@ -137,6 +135,29 @@ while ($msg = $queue->receive()) {
 NOTE: When using the StandardQueue, you do not need to delete the message like
 in this example `$queue->delete($msg);` HOWEVER there are some queues out there
 that support this.
+
+## Using the RedisQueue
+
+To use the `RedisQueue` you need to install Predis
+
+```bash
+composer require predis/predis
+```
+
+Once you have done that, you can begin to use the Redis as one of the possible
+Queues.
+
+```php
+<?php
+
+use Predis\Client;
+use Dspacelabs\Component\Queue\RedisQueue;
+
+$client = new Client();
+$queue  = new RedisQueue($client, 'queue.name');
+```
+
+See https://github.com/nrk/predis for Predis documentation.
 
 ## Using the Broker
 
