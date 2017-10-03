@@ -47,7 +47,7 @@ class RedisQueue extends Queue
     public function receive()
     {
         $message = $this->client->lpop($this->name);
-        if (!$message) {
+        if ($message) {
             $message = unserialize($message);
         }
 
