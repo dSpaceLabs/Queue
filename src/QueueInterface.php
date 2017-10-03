@@ -14,6 +14,7 @@ interface QueueInterface
     /**
      * Returns the name of the Queue
      *
+     * @api
      * @return string
      */
     public function getName();
@@ -21,9 +22,10 @@ interface QueueInterface
     /**
      * Publishes a message to the queue
      *
-     * @param MessageInterface $message
+     * @api
+     * @param MessageInterface|string $message
      */
-    public function publish(MessageInterface $message);
+    public function publish($message);
 
     /**
      * Returns a message from the queue
@@ -31,6 +33,7 @@ interface QueueInterface
      * If there are any messages in the queue it will return a MessageInterface
      * and if there are NO messages in the queue, this SHOULD return null
      *
+     * @api
      * @return MessageInterface|null
      */
     public function receive();
@@ -39,6 +42,7 @@ interface QueueInterface
      * If the queue supports this, it will delete the message from
      * queue
      *
+     * @api
      * @param MessageInterface $message
      * @throws QueueException
      *   If the message cannot be deleted, an exception is thrown

@@ -21,6 +21,7 @@ interface BrokerInterface
     /**
      * Retrieves the queue given the name
      *
+     * @api
      * @param string $name
      *   The name of the queue
      * @throws QueueException
@@ -33,6 +34,7 @@ interface BrokerInterface
      * Adds queue to a pool that can be used to get a queue out at a later
      * time
      *
+     * @api
      * @param QueueInterface $queue
      * @throws QueueException
      *   If queue already exists or could not be added for some other reason

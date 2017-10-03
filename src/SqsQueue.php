@@ -46,8 +46,12 @@ class SqsQueue extends Queue
     /**
      * {@inheritDoc}
      */
-    public function publish(MessageInterface $message)
+    public function publish($message)
     {
+        if (!$message instanceof MessageInterface) {
+            $message = new Message($message);
+        }
+
         $result = $this->client->sendMessage(array(
             'MessageBody' => base64_encode(serialize($message)),
             'QueueUrl'    => $this->queueUrl,
