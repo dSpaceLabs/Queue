@@ -22,13 +22,17 @@
     "require-dev": {
         "aws/aws-sdk-php": "^3.24",
         "mockery/mockery": "^0.9",
+        "monolog/monolog": "^1.23",
         "phing/phing": "^2.15",
+        "php-amqplib/php-amqplib": "^2.7",
         "phpunit/phpunit": "~4.8",
         "predis/predis": "^1.1"
     },
     "suggest": {
         "aws/aws-sdk-php": "Required to use SQS Queues",
-        "predis/predis": "Required to use with Redis Queues"
+        "predis/predis": "Required to use with Redis Queues",
+        "php-amqplib/php-amqplib": "Required for RabbitMQ",
+        "monolog/monolog": "To enabled logging"
     },
     "autoload": {
         "psr-4": { "Dspacelabs\\Component\\Queue\\": "src/" }
