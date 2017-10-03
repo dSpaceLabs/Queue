@@ -24,7 +24,7 @@ class RedisQueue extends Queue
      * @param string $name
      *   The name of this queue
      */
-    public function __construct(Client $client, $name = '')
+    public function __construct(Client $client, $name)
     {
         $this->client = $client;
     }
@@ -37,6 +37,8 @@ class RedisQueue extends Queue
         if (!$message instanceof MessageInterface) {
             $message = new Message($message);
         }
+
+        $this->client->rpush($this->name, serialize($message));
     }
 
     /**
@@ -44,6 +46,12 @@ class RedisQueue extends Queue
      */
     public function receive()
     {
+        $message = $this->client->lpop($this->name);
+        if (!$message) {
+            $message = unserialize($message);
+        }
+
+        return $message;
     }
 
     /**
@@ -51,5 +59,6 @@ class RedisQueue extends Queue
      */
     public function delete(MessageInterface $message)
     {
+        // Messages are removed by the receive method
     }
 }
