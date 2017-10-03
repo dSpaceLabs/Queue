@@ -3,6 +3,7 @@ Change Log
 
 ## [Unreleased]
 * Ability to now publish a message without wrapping it in a Message object
+* Added the ability to use Redis as a queue
 
 
 ## [0.1.0]

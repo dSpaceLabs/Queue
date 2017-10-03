@@ -23,10 +23,12 @@
         "aws/aws-sdk-php": "^3.24",
         "mockery/mockery": "^0.9",
         "phing/phing": "^2.15",
-        "phpunit/phpunit": "~4.8"
+        "phpunit/phpunit": "~4.8",
+        "predis/predis": "^1.1"
     },
     "suggest": {
-        "aws/aws-sdk-php": "Required to use SQS Queues"
+        "aws/aws-sdk-php": "Required to use SQS Queues",
+        "predis/predis": "Required to use with Redis Queues"
     },
     "autoload": {
         "psr-4": { "Dspacelabs\\Component\\Queue\\": "src/" }
@@ -38,5 +40,8 @@
         "branch-alias": {
             "dev-master": "0.2.x-dev"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
