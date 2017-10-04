@@ -2,6 +2,7 @@ Change Log
 ==========
 
 ## [Unreleased]
+* [Issue #5](https://github.com/dSpaceLabs/Queue/issues/5): Support for AWS SQS FIFO
 * Added RabbitQueue
 
 ## [0.2.0]
