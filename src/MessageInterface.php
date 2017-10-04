@@ -65,4 +65,12 @@ interface MessageInterface extends \Serializable
      * @return string|null
      */
     public function getAttribute($attribute);
+
+    /**
+     * Returns true if the message has the attribute
+     *
+     * @param string $attribute
+     * @return boolean
+     */
+    public function hasAttribute($attribute);
 }

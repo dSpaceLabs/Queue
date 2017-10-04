@@ -88,6 +88,14 @@ class Message implements MessageInterface
     /**
      * {@inheritDoc}
      */
+    public function hasAttribute($attribute)
+    {
+        return isset($this->attributes[$attribute]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function serialize()
     {
         return serialize(
