@@ -52,10 +52,21 @@ class SqsQueue extends Queue
             $message = new Message($message);
         }
 
-        $result = $this->client->sendMessage(array(
+        $parameters = [
             'MessageBody' => base64_encode(serialize($message)),
             'QueueUrl'    => $this->queueUrl,
-        ));
+        ];
+
+        /**
+         * Fixes issues for SQS FIFO queues
+         * @see https://github.com/dSpaceLabs/Queue/issues/5
+         */
+        if ($message->hasAttribute('MessageDeduplicationId') && $message->hasAttribute('MessageGroupId')) {
+            $parameters['MessageDeduplicationId'] = $message->getAttribute('MessageDeduplicationId');
+            $parameters['MessageGroupId']         = $message->getAttribute('MessageGroupId');
+        }
+
+        $result = $this->client->sendMessage($parameters);
 
         $message->addAttribute('MD5OfMessageAttributes', $result['MD5OfMessageAttributes']);
         $message->addAttribute('MD5OfMessageBody', $result['MD5OfMessageBody']);
