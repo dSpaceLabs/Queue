@@ -27,6 +27,7 @@ class RedisQueue extends Queue
     public function __construct(Client $client, $name)
     {
         $this->client = $client;
+        $this->name   = $name;
     }
 
     /**

@@ -4,6 +4,7 @@ Change Log
 ## [Unreleased]
 * [Issue #5](https://github.com/dSpaceLabs/Queue/issues/5): Support for AWS SQS FIFO
 * Added RabbitQueue
+* Bug fix with Redis Queue Name not being set
 
 ## [0.2.0]
 * Ability to now publish a message without wrapping it in a Message object
