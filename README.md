@@ -4,6 +4,8 @@ Queue Component [![Build Status](https://travis-ci.org/dSpaceLabs/Queue.svg?bran
 General queue library for PHP, ability to support various different queue
 systems.
 
+For more documentation, see the [wiki](https://github.com/dSpaceLabs/Queue/wiki).
+
 ## Installation
 
 ```
@@ -192,7 +194,7 @@ See [CHANGELOG.md].
 
 ## License
 
-Copyright (c) 2015-2016 dSpace Labs LLC
+Copyright (c) 2015-2017 dSpace Labs LLC
 
 See [LICENSE] for full license.
 
