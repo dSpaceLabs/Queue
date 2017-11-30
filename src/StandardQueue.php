@@ -31,8 +31,12 @@ class StandardQueue extends Queue
     /**
      * {@inheritDoc}
      */
-    public function publish(MessageInterface $message)
+    public function publish($message)
     {
+        if (!$message instanceof MessageInterface) {
+            $message = new Message($message);
+        }
+
         self::$queue->enqueue($message);
     }
 

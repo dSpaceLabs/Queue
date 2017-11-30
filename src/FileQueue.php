@@ -31,8 +31,12 @@ class FileQueue extends Queue
     /**
      * {@inheritDoc}
      */
-    public function publish(MessageInterface $message)
+    public function publish($message)
     {
+        if (!$message instanceof MessageInterface) {
+            $message = new Message($message);
+        }
+
         $content = serialize($message);
         $fname   = hash('sha256', $content.microtime());
         $path    = sprintf('%s/%s.%s.message', $this->path, $this->name, $fname);
@@ -60,7 +64,7 @@ class FileQueue extends Queue
     }
 
     /**
-     * {@inheirDoc}
+     * {@inheritDoc}
      */
     public function delete(MessageInterface $message)
     {

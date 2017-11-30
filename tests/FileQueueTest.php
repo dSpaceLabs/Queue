@@ -31,4 +31,20 @@ class FileQueueTest extends \PHPUnit_Framework_TestCase
         $msg = $queue->receive();
         $this->assertNull($msg);
     }
+
+    /**
+     * This will test to make sure that you can publish a string without having to
+     * wrap it in a Message object
+     */
+    public function testPublishString()
+    {
+        $message = 'Hello World';
+        $queue   = new FileQueue('test', sys_get_temp_dir());
+        $queue->publish($message);
+        $message = $queue->receive();
+        $this->assertNotNull($message);
+        $this->assertInstanceOf('\Dspacelabs\Component\Queue\Message', $message);
+        $this->assertSame('Hello World', $message->getBody());
+        $queue->delete($message);
+    }
 }

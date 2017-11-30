@@ -16,6 +16,7 @@ interface MessageInterface extends \Serializable
     /**
      * Set the contents of the message
      *
+     * @api
      * @param mixed $body
      * @return self
      */
@@ -24,6 +25,7 @@ interface MessageInterface extends \Serializable
     /**
      * Retrieve the contents of the body
      *
+     * @api
      * @return mixed
      */
     public function getBody();
@@ -31,6 +33,7 @@ interface MessageInterface extends \Serializable
     /**
      * Retrieve all attributes
      *
+     * @api
      * @return array
      */
     public function getAttributes();
@@ -38,6 +41,7 @@ interface MessageInterface extends \Serializable
     /**
      * Add an attribute
      *
+     * @api
      * @param string $attribute
      * @param string $value
      */
@@ -46,6 +50,7 @@ interface MessageInterface extends \Serializable
     /**
      * Replace all attributes
      *
+     * @api
      * @param array $attributes
      * @return self
      */
@@ -55,8 +60,17 @@ interface MessageInterface extends \Serializable
      * Get value of attribute, if attribute does not exist on message this
      * returns null
      *
+     * @api
      * @param string $attribute
      * @return string|null
      */
     public function getAttribute($attribute);
+
+    /**
+     * Returns true if the message has the attribute
+     *
+     * @param string $attribute
+     * @return boolean
+     */
+    public function hasAttribute($attribute);
 }
