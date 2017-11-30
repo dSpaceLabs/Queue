@@ -64,4 +64,20 @@ class RabbitQueue extends Queue
         $this->channel->close();
         $this->connection->close();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function purge()
+    {
+        throw new QueueException('Not Implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumberOfMessages()
+    {
+        throw new QueueException('Not Implemented');
+    }
 }

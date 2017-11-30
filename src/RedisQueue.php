@@ -62,4 +62,20 @@ class RedisQueue extends Queue
     {
         // Messages are removed by the receive method
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function purge()
+    {
+        throw new QueueException('Not Implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumberOfMessages()
+    {
+        throw new QueueException('Not Implemented');
+    }
 }
