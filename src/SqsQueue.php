@@ -91,4 +91,20 @@ class SqsQueue extends Queue
             'QueueUrl'      => $this->queueUrl,
         ));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function purge()
+    {
+        throw new QueueException('Not Implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumberOfMessages()
+    {
+        throw new QueueException('Not Implemented');
+    }
 }

@@ -53,4 +53,20 @@ class StandardQueue extends Queue
     {
         // not used by this class
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function purge()
+    {
+        throw new QueueException('Not Implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumberOfMessages()
+    {
+        throw new QueueException('Not Implemented');
+    }
 }

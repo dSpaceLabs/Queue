@@ -70,4 +70,20 @@ class FileQueue extends Queue
 
         unlink($message->getAttribute('path'));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function purge()
+    {
+        throw new QueueException('Not Implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumberOfMessages()
+    {
+        throw new QueueException('Not Implemented');
+    }
 }

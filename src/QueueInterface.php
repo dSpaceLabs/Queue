@@ -40,6 +40,7 @@ interface QueueInterface
      * queue
      *
      * @param MessageInterface $message
+     * @return void
      * @throws QueueException
      *   If the message cannot be deleted, an exception is thrown
      */
@@ -48,8 +49,17 @@ interface QueueInterface
     /**
      * Purges ALL messages from the queue
      *
+     * @return void
      * @throws QueueException
      *   If the queue cannot be purged, this exception is thrown
      */
-    //public function purge();
+    public function purge();
+
+    /**
+     * Returns the number of messages in the queue
+     *
+     * @return integer
+     * @throws QueueException
+     */
+    public function getNumberOfMessages();
 }
